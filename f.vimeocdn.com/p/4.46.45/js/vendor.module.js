@@ -7576,7 +7576,7 @@ function r_(e, t) {
 }
 
 function n_(e) {
-    return (t, ...r) => (r.forEach(r => {
+    return (t, r) => (r.forEach(r => {
         for (const n in r) {
             const o = Object.getOwnPropertyDescriptor(r, n);
             Object.defineProperty(t, n, Object.assign(o, e))
@@ -7621,7 +7621,7 @@ function f_(e) {
     return Boolean(t)
 }
 const l_ = () => {
-    const e = window.navigator.connection ? .downlink;
+    const e = window.navigator.connection .downlink;
     return void 0 === e ? null : 1e3 * e * 1e3
 };
 
@@ -7660,7 +7660,7 @@ const v_ = (e, t, r = !1) => {
         try {
             const n = new URL(e);
             return Object.entries(t).forEach(([e, t]) => {
-                r && void 0 === t || n.searchParams.set(e, t ? .toString() ? ? "")
+                r && void 0 === t || n.searchParams.set(e, t .toString() || "")
             }), n.toString()
         } catch (t) {
             return e
@@ -7704,16 +7704,16 @@ const w_ = (e, t = !1) => new Promise((r, n) => {
     E_ = e => Math.pow(e, 2),
     __ = e => Math.sqrt(e),
     T_ = (e, t) => {
-        const r = (...e) => {},
-            n = (...e) => {};
+        const r = (e) => {},
+            n = (e) => {};
         return Object.assign(n, {
             log: r,
-            warn: (...e) => {},
-            error: (...e) => {}
+            warn: (e) => {},
+            error: (e) => {}
         }), n
     };
 
-function S_(e, ...t) {
+function S_(e, t) {
     return t.reduce((e, t) => (Object.keys(t || {}).forEach(r => {
         const n = e[r],
             o = t[r];
@@ -7817,7 +7817,7 @@ const Y_ = {
         iPad: M_("ipad;"),
         iPadNonRetina: M_("ipad;") && L_ < 2,
         mac: M_("mac os"),
-        navigatorConnectionDownlink: !!window.navigator.connection ? .downlink,
+        navigatorConnectionDownlink: !!window.navigator.connection .downlink,
         pictureInPictureSupportType: function() {
             if ("pictureInPictureEnabled" in document) return "pip-api";
             const e = document.createElement("video");
@@ -7878,19 +7878,19 @@ function J_(e, t) {
     function o() {
         return n = r && "visible" === document.visibilityState, n
     }
-    if (!G_.intersectionObserver) return t ? .(!0), {
+    if (!G_.intersectionObserver) return t .(!0), {
         cleanup: () => {},
         isInView: !0
     };
     const i = new IntersectionObserver(e => {
         const [i] = e;
-        r = !!i ? .isIntersecting, o(), t ? .(n)
+        r = !!i .isIntersecting, o(), t .(n)
     }, {
         threshold: .5
     });
     i.observe(e);
     const a = () => {
-        o(), t ? .(n)
+        o(), t .(n)
     };
     return document.addEventListener("visibilitychange", a), {
         cleanup: () => {
@@ -8052,7 +8052,7 @@ function gT(e, t) {
     const r = e.then.bind(e);
     return Object.assign(e, {
         abort: t,
-        then: (...e) => gT(r(...e), t)
+        then: (e) => gT(r(e), t)
     })
 }
 const bT = ["get", "post", "put", "patch", "head", "delete"],
@@ -8081,7 +8081,7 @@ function ET(e, t) {
                 t = o;
                 break
             }
-            if (o ? .isVimeoResponse) return Promise.resolve(o).then(TT(t))
+            if (o .isVimeoResponse) return Promise.resolve(o).then(TT(t))
         }
         return vT(t).then(TT(t))
     }
@@ -8114,7 +8114,7 @@ function ET(e, t) {
                 }(o);
                 if (t++, 0 !== i && t > 0) {
                     await s_(i);
-                    const a = e ? .hooks ? .beforeRetry || [];
+                    const a = e .hooks .beforeRetry || [];
                     for (let r = 0; r < a.length; r++) {
                         const n = a[r];
                         await n(e, o, t)
@@ -8156,7 +8156,7 @@ function TT(e) {
 bT.forEach(function(e) {
     return ET[e] = (t, r) => ET(t, {
         method: e,
-        ...r
+        r
     }), ET[e]
 });
 const {
@@ -9216,7 +9216,7 @@ function gO(e) {
     return Math.round(parseInt(e, 16) / 255 * 100) / 100
 }
 
-function bO(...e) {
+function bO(e) {
     if (1 === e.length && e[0] instanceof bO) {
         var t = e[0];
         return this.red = t.red, this.green = t.green, this.blue = t.blue, this.alpha = t.alpha, this.hue = t.hue, this.saturation = t.saturation, this.lightness = t.lightness, this
@@ -9506,7 +9506,7 @@ var OO = {
 
 function RO(e, t, r) {
     if (OO.randomUUID && !t && !e) return OO.randomUUID();
-    const n = (e = e || {}).random ? ? e.rng ? .() ? ? function() {
+    const n = (e = e || {}).random || e.rng .() || function() {
         if (!AO) {
             if ("undefined" == typeof crypto || !crypto.getRandomValues) throw new Error("crypto.getRandomValues() not supported. See https://github.com/uuidjs/uuid#getrandomvalues-not-supported");
             AO = crypto.getRandomValues.bind(crypto)
@@ -9636,7 +9636,7 @@ var NO = t(function(t, r) {
                         [h, [f, "Quark"]],
                         [/\bddg\/([\w\.]+)/i],
                         [h, [f, "DuckDuckGo"]],
-                        [/(?:\buc? ?browser|(?:juc.+)ucweb)[\/ ]?([\w\.]+)/i],
+                        [/(?:\buc||browser|(?:juc.+)ucweb)[\/ ]?([\w\.]+)/i],
                         [h, [f, "UC" + A]],
                         [/microm.+\bqbcore\/([\w\.]+)/i, /\bqbcore\/([\w\.]+).+microm/i, /micromessenger\/([\w\.]+)/i],
                         [h, [f, "WeChat"]],
@@ -13983,7 +13983,7 @@ const ED = e => "object" == typeof e && null !== e,
         if (r = {
                 deep: !1,
                 target: {},
-                ...r
+                r
             }, n.has(e)) return n.get(e);
         n.set(e, r.target);
         const {
@@ -14096,9 +14096,9 @@ function HD(e) {
 
 function WD(e) {
     return "function" == typeof e ? function(e) {
-        return (UD || (UD = [IDBCursor.prototype.advance, IDBCursor.prototype.continue, IDBCursor.prototype.continuePrimaryKey])).includes(e) ? function(...t) {
+        return (UD || (UD = [IDBCursor.prototype.advance, IDBCursor.prototype.continue, IDBCursor.prototype.continuePrimaryKey])).includes(e) ? function(t) {
             return e.apply(GD(this), t), YD(this.request)
-        } : function(...t) {
+        } : function(t) {
             return YD(e.apply(GD(this), t))
         }
     }(e) : (e instanceof IDBTransaction && function(e) {
@@ -14166,14 +14166,14 @@ function JD(e, t) {
         n = t !== r,
         o = $D.includes(r);
     if (!(r in (n ? IDBIndex : IDBObjectStore).prototype) || !o && !qD.includes(r)) return;
-    const i = async function(e, ...t) {
+    const i = async function(e, t) {
         const i = this.transaction(e, o ? "readwrite" : "readonly");
         let a = i.store;
-        return n && (a = a.index(t.shift())), (await Promise.all([a[r](...t), o && i.done]))[0]
+        return n && (a = a.index(t.shift())), (await Promise.all([a[r](t), o && i.done]))[0]
     };
     return QD.set(t, i), i
 }
-HD(e => ({ ...e,
+HD(e => ({ e,
     get: (t, r, n) => JD(t, r) || e.get(t, r, n),
     has: (t, r) => !!JD(t, r) || e.has(t, r)
 }));
@@ -14185,14 +14185,14 @@ const ZD = ["continue", "continuePrimaryKey", "advance"],
         get(e, t) {
             if (!ZD.includes(t)) return e[t];
             let r = ex[t];
-            return r || (r = ex[t] = function(...e) {
-                tx.set(this, rx.get(this)[t](...e))
+            return r || (r = ex[t] = function(e) {
+                tx.set(this, rx.get(this)[t](e))
             }), r
         }
     };
-async function* ox(...e) {
+async function* ox(e) {
     let t = this;
-    if (t instanceof IDBCursor || (t = await t.openCursor(...e)), !t) return;
+    if (t instanceof IDBCursor || (t = await t.openCursor(e)), !t) return;
     const r = new Proxy(t, nx);
     for (rx.set(r, t), VD.set(r, GD(t)); t;) yield r, t = await (tx.get(r) || t.continue()), tx.delete(r)
 }
@@ -14200,7 +14200,7 @@ async function* ox(...e) {
 function ix(e, t) {
     return t === Symbol.asyncIterator && jD(e, [IDBIndex, IDBObjectStore, IDBCursor]) || "iterate" === t && jD(e, [IDBIndex, IDBObjectStore])
 }
-HD(e => ({ ...e,
+HD(e => ({ e,
     get: (t, r, n) => ix(t, r) ? ox : e.get(t, r, n),
     has: (t, r) => ix(t, r) || e.has(t, r)
 }));

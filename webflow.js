@@ -7,6 +7,8 @@
  */
 
 (() => { // webpackBootstrap
+    console.log('Webflow JS initialized');
+    console.log('Webflow script started');
     var __webpack_modules__ = ({
         1361: (function(module) {
             /**
@@ -6193,7 +6195,7 @@
             var memoizeCapped = __webpack_require__(6141);
 
             /** Used to match property names within property paths. */
-            var rePropName = /[^.[\]]+|\[(?:(-?\d+(?:\.\d+)?)|(["'])((?:(?!\2)[^\\]|\\.)*?)\2)\]|(?=(?:\.|\[\])(?:\.|\[\]|$))/g;
+            var rePropName = /[^[\]]+|\[(?:(-?\d+(?:\.\d+)?)|(["'])((?:(?!\2)[^\\]|\\.)*?)\2)\]|(?=(?:\.|\[\])(?:\.|\[\]|$))/g;
 
             /** Used to match backslashes in property paths. */
             var reEscapeChar = /\\(\\)?/g;
@@ -6946,7 +6948,7 @@
              * @memberOf _
              * @since 3.0.0
              * @category Util
-             * @param {...(Function|Function[])} [funcs] The functions to invoke.
+             * @param {.(Function|Function[])} [funcs] The functions to invoke.
              * @returns {Function} Returns the new composite function.
              * @see _.flowRight
              * @example
@@ -10744,7 +10746,7 @@
                         myScript = scripts[index] || {
                             src: ""
                         };
-                    queryString = myScript.src ? myScript.src.replace(/^[^\?]+\??/, "") : "", renderer = getQueryVariable("renderer")
+                    queryString = myScript.src ? myScript.src.replace(/^[^\?]+\||/, "") : "", renderer = getQueryVariable("renderer")
                 }
                 var readyStateCheckInterval = setInterval(checkReady, 100);
                 try {
@@ -16314,14 +16316,14 @@
                 applyMiddleware: () => ( /* reexport */ applyMiddleware)
             });
 
-            ; // CONCATENATED MODULE: ../../app/node_modules/lodash-es/_freeGlobal.js
+            ; // CONCATENATED MODULE: ././app/node_modules/lodash-es/_freeGlobal.js
             /** Detect free variable `global` from Node.js. */
             var freeGlobal = typeof global == 'object' && global && global.Object === Object && global;
 
             /* ESM default export */
             const _freeGlobal = (freeGlobal);
 
-            ; // CONCATENATED MODULE: ../../app/node_modules/lodash-es/_root.js
+            ; // CONCATENATED MODULE: ././app/node_modules/lodash-es/_root.js
 
 
             /** Detect free variable `self`. */
@@ -16333,7 +16335,7 @@
             /* ESM default export */
             const _root = (root);
 
-            ; // CONCATENATED MODULE: ../../app/node_modules/lodash-es/_Symbol.js
+            ; // CONCATENATED MODULE: ././app/node_modules/lodash-es/_Symbol.js
 
 
             /** Built-in value references. */
@@ -16342,7 +16344,7 @@
             /* ESM default export */
             const _Symbol = (Symbol);
 
-            ; // CONCATENATED MODULE: ../../app/node_modules/lodash-es/_getRawTag.js
+            ; // CONCATENATED MODULE: ././app/node_modules/lodash-es/_getRawTag.js
 
 
             /** Used for built-in method references. */
@@ -16391,7 +16393,7 @@
             /* ESM default export */
             const _getRawTag = (getRawTag);
 
-            ; // CONCATENATED MODULE: ../../app/node_modules/lodash-es/_objectToString.js
+            ; // CONCATENATED MODULE: ././app/node_modules/lodash-es/_objectToString.js
             /** Used for built-in method references. */
             var _objectToString_objectProto = Object.prototype;
 
@@ -16416,7 +16418,7 @@
             /* ESM default export */
             const _objectToString = (objectToString);
 
-            ; // CONCATENATED MODULE: ../../app/node_modules/lodash-es/_baseGetTag.js
+            ; // CONCATENATED MODULE: ././app/node_modules/lodash-es/_baseGetTag.js
 
 
 
@@ -16447,7 +16449,7 @@
             /* ESM default export */
             const _baseGetTag = (baseGetTag);
 
-            ; // CONCATENATED MODULE: ../../app/node_modules/lodash-es/_overArg.js
+            ; // CONCATENATED MODULE: ././app/node_modules/lodash-es/_overArg.js
             /**
              * Creates a unary function that invokes `func` with its argument transformed.
              *
@@ -16465,7 +16467,7 @@
             /* ESM default export */
             const _overArg = (overArg);
 
-            ; // CONCATENATED MODULE: ../../app/node_modules/lodash-es/_getPrototype.js
+            ; // CONCATENATED MODULE: ././app/node_modules/lodash-es/_getPrototype.js
 
 
             /** Built-in value references. */
@@ -16474,7 +16476,7 @@
             /* ESM default export */
             const _getPrototype = (getPrototype);
 
-            ; // CONCATENATED MODULE: ../../app/node_modules/lodash-es/isObjectLike.js
+            ; // CONCATENATED MODULE: ././app/node_modules/lodash-es/isObjectLike.js
             /**
              * Checks if `value` is object-like. A value is object-like if it's not `null`
              * and has a `typeof` result of "object".
@@ -16506,7 +16508,7 @@
             /* ESM default export */
             const lodash_es_isObjectLike = (isObjectLike);
 
-            ; // CONCATENATED MODULE: ../../app/node_modules/lodash-es/isPlainObject.js
+            ; // CONCATENATED MODULE: ././app/node_modules/lodash-es/isPlainObject.js
 
 
 
@@ -16571,8 +16573,8 @@
             /* ESM default export */
             const lodash_es_isPlainObject = (isPlainObject_isPlainObject);
 
-            // EXTERNAL MODULE: ../../app/node_modules/redux/node_modules/symbol-observable/es/index.js + 1 modules
-            var es = __webpack_require__(3485);; // CONCATENATED MODULE: ../../app/node_modules/redux/es/createStore.js
+            // EXTERNAL MODULE: ././app/node_modules/redux/node_modules/symbol-observable/es/index.js + 1 modules
+            var es = __webpack_require__(3485);; // CONCATENATED MODULE: ././app/node_modules/redux/es/createStore.js
 
 
 
@@ -16826,7 +16828,7 @@
                     getState: getState,
                     replaceReducer: replaceReducer
                 }, _ref2[es /* default */ .Z] = observable, _ref2;
-            }; // CONCATENATED MODULE: ../../app/node_modules/redux/es/combineReducers.js
+            }; // CONCATENATED MODULE: ././app/node_modules/redux/es/combineReducers.js
 
 
 
@@ -16952,7 +16954,7 @@
                     }
                     return hasChanged ? nextState : state;
                 };
-            }; // CONCATENATED MODULE: ../../app/node_modules/redux/es/bindActionCreators.js
+            }; // CONCATENATED MODULE: ././app/node_modules/redux/es/bindActionCreators.js
             function bindActionCreator(actionCreator, dispatch) {
                 return function() {
                     return dispatch(actionCreator.apply(undefined, arguments));
@@ -16999,7 +17001,7 @@
                     }
                 }
                 return boundActionCreators;
-            }; // CONCATENATED MODULE: ../../app/node_modules/redux/es/compose.js
+            }; // CONCATENATED MODULE: ././app/node_modules/redux/es/compose.js
             /**
              * Composes single-argument functions from right to left. The rightmost
              * function can take multiple arguments as it provides the signature for
@@ -17033,7 +17035,7 @@
                         return f(composed);
                     }, last.apply(undefined, arguments));
                 };
-            }; // CONCATENATED MODULE: ../../app/node_modules/redux/es/applyMiddleware.js
+            }; // CONCATENATED MODULE: ././app/node_modules/redux/es/applyMiddleware.js
             var _extends = Object.assign || function(target) {
                 for (var i = 1; i < arguments.length; i++) {
                     var source = arguments[i];
@@ -17091,7 +17093,7 @@
                         });
                     };
                 };
-            }; // CONCATENATED MODULE: ../../app/node_modules/redux/es/index.js
+            }; // CONCATENATED MODULE: ././app/node_modules/redux/es/index.js
 
 
 
@@ -17118,7 +17120,7 @@
                 Z: () => ( /* binding */ es)
             });
 
-            ; // CONCATENATED MODULE: ../../app/node_modules/redux/node_modules/symbol-observable/es/ponyfill.js
+            ; // CONCATENATED MODULE: ././app/node_modules/redux/node_modules/symbol-observable/es/ponyfill.js
             function symbolObservablePonyfill(root) {
                 var result;
                 var Symbol = root.Symbol;
@@ -17137,7 +17139,7 @@
                 return result;
             };
 
-            ; // CONCATENATED MODULE: ../../app/node_modules/redux/node_modules/symbol-observable/es/index.js
+            ; // CONCATENATED MODULE: ././app/node_modules/redux/node_modules/symbol-observable/es/index.js
             /* module decorator */
             module = __webpack_require__.hmd(module);
             /* global window */
@@ -19067,7 +19069,7 @@
                     U.agentTests.push("(" + a + ")");
                     var b = new RegExp(U.agentTests.join("|"), "i");
                     U.fallback = b.test(navigator.userAgent);
-                }, b.fallback("6.0.[2-5] Safari"), b.tween = function(a) {
+                }, b.fallback("6.0[2-5] Safari"), b.tween = function(a) {
                     return new R(a);
                 }, b.delay = function(a, b, c) {
                     return new S({
@@ -21614,7 +21616,7 @@
                 return b[0] === 80 && b[1] === 75 && b[2] === 3 && b[3] === 4;
             }
             async function fetchRequest(url) {
-                return await fetch(new URL(url, window ? .location ? .href).href).then((r) => r.arrayBuffer());
+                return await fetch(new URL(url, (window && window.location)?.href).href).then((r) => r.arrayBuffer());
             }
             async function base64fromU8(data) {
                 const base64url = await new Promise((resolve) => {
@@ -21651,7 +21653,7 @@
                     const ext = p.split('.').pop();
                     const assetB64 = await dotLottie.readB64(`images/${p}`);
                     // Handles assets that are encoded directly in the JSON
-                    if (ext ? .startsWith('data:')) {
+                    if (ext.startsWith('data:')) {
                         asset.p = ext;
                         asset.e = 1;
                         return asset;
@@ -22745,8 +22747,8 @@
                         actionTypeId
                     } = actionItem;
                     const shouldUsePlugin = // If it's targeted by class, don't query the element by pluginElementId
-                        actionTypeId === _sharedconstants.ActionTypeConsts.PLUGIN_RIVE ? (actionItem.config ? .target ? .selectorGuids || []).length === 0 : isPluginType(actionTypeId);
-                    const pluginInstance = shouldUsePlugin ? createPluginInstance(actionTypeId) ? .(element, actionItem) : null;
+                        actionTypeId === _sharedconstants.ActionTypeConsts.PLUGIN_RIVE ? (actionItem.config.target.selectorGuids || []).length === 0 : isPluginType(actionTypeId);
+                    const pluginInstance = shouldUsePlugin ? createPluginInstance(actionTypeId)(element, actionItem) : null;
                     const destination = getDestinationValues({
                             element,
                             actionItem,
@@ -23084,8 +23086,8 @@
                         const config = // When useEventTarget is explicitly true, use event target/targets to query elements
                             // However, skip this condition when objectId is defined
                             // @ts-expect-error - Property 'target' does not exist on type 'never'.
-                            itemConfig ? .target ? .useEventTarget === true && // @ts-expect-error - Property 'target' does not exist on type 'never'.
-                            itemConfig ? .target ? .objectId == null ? {
+                            itemConfig.target.useEventTarget === true && // @ts-expect-error - Property 'target' does not exist on type 'never'.
+                            itemConfig.target.objectId == null ? {
                                 target: event.target,
                                 targets: event.targets
                             } : itemConfig;
@@ -23096,7 +23098,7 @@
                         });
                         const shouldUsePlugin = isPluginType(actionTypeId);
                         itemElements.forEach((element) => {
-                            const pluginInstance = shouldUsePlugin ? createPluginInstance(actionTypeId) ? .(element, actionItem) : null;
+                            const pluginInstance = shouldUsePlugin ? createPluginInstance(actionTypeId)(element, actionItem) : null;
                             createInstance({
                                 destination: getDestinationValues({
                                         element,
@@ -23222,7 +23224,7 @@
                 }
                 // Identify first animated group and apply the initial QuickEffect delay
                 const isFirstGroup = groupIndex === 0 || groupIndex === 1 && useFirstGroupAsInitialState;
-                const instanceDelay = isFirstGroup && isQuickEffect(event.action ? .actionTypeId) ? event.config.delay : undefined;
+                const instanceDelay = isFirstGroup && isQuickEffect(event.action.actionTypeId) ? event.config.delay : undefined;
                 // Abort playback if no action items exist at group index
                 const actionItems = (0, _get.default)(actionItemGroups, [
                     groupIndex,
@@ -23261,7 +23263,7 @@
                         elementApi: _IX2BrowserApi
                     });
                     elements.forEach((element, elementIndex) => {
-                        const pluginInstance = shouldUsePlugin ? createPluginInstance(actionTypeId) ? .(element, actionItem) : null;
+                        const pluginInstance = shouldUsePlugin ? createPluginInstance(actionTypeId)(element, actionItem) : null;
                         const pluginDuration = shouldUsePlugin ? getPluginDuration(actionTypeId)(element, actionItem) : null;
                         groupStartResult = true;
                         const isCarrier = carrierIndex === actionIndex && elementIndex === 0;
@@ -23330,7 +23332,7 @@
                     ixSession.reducedMotion && _sharedconstants.ReducedMotionTypes[actionItem.actionTypeId];
                 let skipToValue;
                 if (skipMotion && continuous) {
-                    switch (ixData.events[eventId] ? .eventTypeId) {
+                    switch (ixData.events[eventId].eventTypeId) {
                         case _sharedconstants.EventTypeConsts.MOUSE_MOVE:
                         case _sharedconstants.EventTypeConsts.MOUSE_MOVE_IN_VIEWPORT:
                             skipToValue = restingValue;
@@ -23892,7 +23894,7 @@
                     } = ixData;
                     // trigger the handler only once if only one of SCROLL_INTO or SCROLL_OUT_OF event types
                     // are registered.
-                    if (!events[event.action.config.autoStopEventId] && state.triggered) {
+                    if (!events[(event && event.action)?.config?.autoStopEventId] && state.triggered) {
                         return state;
                     }
                     if (event.eventTypeId === SCROLL_INTO_VIEW === elementVisible) {
@@ -24981,12 +24983,12 @@
                     if (inputs[input] == null) result[input] = 0;
                 return result;
             };
-            const getPluginDestination = (actionItemConfig) => actionItemConfig.value.inputs ? ? {};
+            const getPluginDestination = (actionItemConfig) => actionItemConfig.value.inputs || {};
             const createPluginInstance = (element, actionItem) => {
-                const selectorGuids = actionItem.config ? .target ? .selectorGuids || [];
+                const selectorGuids = actionItem.config.target.selectorGuids || [];
                 if (selectorGuids.length > 0) return element;
                 // In this case, we define pluginInstance as a reference to the container element
-                const pluginElementId = actionItem ? .config ? .target ? .pluginElement;
+                const pluginElementId = actionItem.config.target.pluginElement;
                 return pluginElementId ? queryContainerElement(pluginElementId) : null;
             };
             const renderPlugin = (containerElement, {
@@ -25008,9 +25010,9 @@
                         // Render instance immediately on load and then clean up handler
                         const onLoad = () => {
                             render();
-                            riveInstance ? .off('load', onLoad);
+                            riveInstance.off('load', onLoad);
                         };
-                        riveInstance ? .on('load', onLoad);
+                        riveInstance.on('load', onLoad);
                     }
 
                     function render() {
@@ -25019,8 +25021,8 @@
                         if (!riveInstance.isPlaying) riveInstance.play(name, false); // set autoplay: false because IX engine is controlling playback.
                         if (FIT_KEY in inputs || ALIGNMENT_KEY in inputs) {
                             const currentLayout = riveInstance.layout;
-                            const nextFit = inputs[FIT_KEY] ? ? currentLayout.fit;
-                            const nextAlignment = inputs[ALIGNMENT_KEY] ? ? currentLayout.alignment;
+                            const nextFit = inputs[FIT_KEY] || currentLayout.fit;
+                            const nextAlignment = inputs[ALIGNMENT_KEY] || currentLayout.alignment;
                             if (nextFit !== currentLayout.fit || nextAlignment !== currentLayout.alignment) {
                                 riveInstance.layout = currentLayout.copyWith({
                                     fit: nextFit,
@@ -25057,7 +25059,7 @@
                     }
                 }
                 // Render rive if the instance is available
-                if (instance ? .rive) renderRive(instance.rive);
+                if (instance.rive) renderRive(instance.rive);
                 else frontendModule.setLoadHandler(containerElement, renderRive);
             };
             const clearPlugin = (_containerElement, _actionItem) => null; // Not used by this plugin
@@ -25153,7 +25155,7 @@
             };
             const createPluginInstance = (element, actionItem) => {
                 // In this case, we define pluginInstance as a reference to the container element
-                const pluginElementId = actionItem ? .config ? .target ? .pluginElement;
+                const pluginElementId = actionItem.config.target.pluginElement;
                 return pluginElementId ? queryContainerElement(pluginElementId) : null;
             };
             const renderPlugin = (containerElement, refState, actionItem) => {
@@ -27526,7 +27528,7 @@
                         doc
                     ] : [];
                 }
-                const overrides = event ? .action ? .config ? .affectedElements ? ? {};
+                const overrides = (event && event.action)?.config?.affectedElements || {};
                 const override = overrides[id || selector] || {};
                 const validOverride = Boolean(override.id || override.selector);
                 let limitAffectedElements;
@@ -32002,5 +32004,4 @@
         __webpack_require__(2444);
         __webpack_require__(3559);
     })();
-
 })();

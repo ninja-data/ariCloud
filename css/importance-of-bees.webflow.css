@@ -25,11 +25,19 @@
 }
 
 body {
-    background-color: var(--color-beige);
-    color: #333;
-    font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
-    font-size: 15px;
-    line-height: 20px;
+    background-color: #3d3d00;
+    color: var(--color-black);
+    font-family: notosans, sans-serif;
+    font-size: 1.25vw;
+    font-weight: 400;
+    line-height: 1.3;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    margin: 0;
+    padding: 0;
 }
 
 h3 {
@@ -61,7 +69,7 @@ a:hover {
 }
 
 .title {
-    background-color: var(--color-beige);
+    background-color: transparent;
     flex-flow: row;
     justify-content: center;
     align-items: flex-start;
@@ -96,17 +104,17 @@ a:hover {
 
 .bee-green {
     z-index: 7;
-    width: 6vw;
-    height: 4.5vw;
+    width: 3.4vw;
+    height: 2.55vw;
     position: absolute;
 }
 
 .bee-green.green-follow {
-    width: 100px;
-    height: 75px;
-    margin-top: 20vh;
-    margin-left: 20vw;
+    width: 4.5vw;
+    height: 3.375vw;
     position: absolute;
+    top: 0;
+    left: 0;
 }
 
 .bee-green.flipped {
@@ -115,15 +123,15 @@ a:hover {
 }
 
 .bee-green.flipped.green-graze {
-    width: 5vw;
-    height: 3.75vw;
+    width: 2.8vw;
+    height: 2.1vw;
     top: 7vw;
     left: 54vw;
 }
 
 .bee-green.flipped.green-graze-new {
-    width: 5vw;
-    height: 3.75vw;
+    width: 2.8vw;
+    height: 2.1vw;
     top: 2vw;
     left: 54vw;
 }
@@ -137,8 +145,8 @@ a:hover {
 }
 
 .bee-honey {
-    width: 8vw;
-    height: 6vw;
+    width: 4.5vw;
+    height: 3.375vw;
     margin-top: 0;
     margin-left: 0;
     position: absolute;
@@ -146,10 +154,10 @@ a:hover {
 
 .bee-honey.honey-graze {
     z-index: 15;
-    width: 6vw;
-    height: 4.5vw;
-    margin-top: -2.5vw;
-    margin-left: -3.25vw;
+    width: 3.4vw;
+    height: 2.55vw;
+    margin-top: -1.42vw;
+    margin-left: -1.85vw;
 }
 
 .bee-honey.honey-follow {
@@ -158,8 +166,11 @@ a:hover {
 }
 
 .bee-honey.honey-follow.flipped {
-    width: 120px;
-    height: 90px;
+    width: 5.6vw;
+    height: 4.2vw;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
 .bee-honey.end-honey-follow {
@@ -172,8 +183,8 @@ a:hover {
 
 .bee-bumble {
     z-index: 7;
-    width: 9vw;
-    height: 6.75vw;
+    width: 5.1vw;
+    height: 3.825vw;
     position: absolute;
     top: 0;
     left: 0;
@@ -184,10 +195,11 @@ a:hover {
 }
 
 .bee-bumble.bumble-follow {
-    width: 140px;
-    height: 105px;
-    margin-top: 45vh;
-    margin-left: 52vw;
+    width: 6.8vw;
+    height: 5.1vw;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
 .bee-bumble.end-bumble-follow {
@@ -200,15 +212,15 @@ a:hover {
 }
 
 .bee-bumble.bumble-graze {
-    width: 8vw;
-    height: 6vw;
+    width: 4.5vw;
+    height: 3.375vw;
     top: 8vw;
     left: -9vw;
 }
 
 .bee-bumble.bumble-graze-new {
-    width: 8vw;
-    height: 6vw;
+    width: 4.5vw;
+    height: 3.375vw;
     top: 5vw;
     left: -7vw;
 }
@@ -226,6 +238,7 @@ a:hover {
 }
 
 .title-bg {
+    background-color: #3d3d00;
     justify-content: center;
     align-items: center;
     width: 100vw;
@@ -234,6 +247,9 @@ a:hover {
     position: fixed;
     z-index: 1;
     top: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
     overflow: hidden;
 }
 
@@ -242,9 +258,16 @@ a:hover {
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: auto;
+    height: 100%;
     display: flex;
     position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.lottie-title-flowers svg {
+    width: 100% !important;
+    height: auto !important;
 }
 
 .loader {
@@ -736,6 +759,15 @@ a:hover {
     position: fixed;
     top: 0;
     left: 0;
+    pointer-events: none;
+    transform-style: preserve-3d;
+}
+
+.bee-wrapper {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
 }
 
 .title-bumble-follow {
@@ -1148,6 +1180,17 @@ a:hover {
 
 .image-2 {
     width: 100%;
+}
+
+.lottie-end-flowers {
+    width: 100vw;
+    height: 100vh;
+}
+
+.lottie-end-flowers svg {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover;
 }
 
 @media screen and (max-width: 991px) {
