@@ -75,10 +75,37 @@ a:hover {
     align-items: flex-start;
     width: 100vw;
     height: 100vh;
+    height: 100svh;
     margin-top: 0;
     display: flex;
     position: relative;
     overflow: hidden;
+}
+
+.hero-animated-text {
+    z-index: 2;
+    pointer-events: none;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    height: 100svh;
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.hero-animated-text-inner {
+    background-color: #f7f1b7;
+    padding: clamp(10px, 1.8vw, 22px) clamp(14px, 2.6vw, 32px);
+    font-family: haboro-serif, sans-serif;
+    font-size: clamp(44px, 7vw, 120px);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: #000;
+    text-align: center;
 }
 
 .intro {
@@ -231,6 +258,7 @@ a:hover {
     align-items: center;
     width: 100vw;
     height: 100vh;
+    height: 100svh;
     display: none;
     position: fixed;
     top: 0;
@@ -238,11 +266,12 @@ a:hover {
 }
 
 .title-bg {
-    background-color: #3d3d00;
+    background-color: #f7f1b7;
     justify-content: center;
     align-items: center;
     width: 100vw;
     height: 100vh;
+    height: 100svh;
     display: flex;
     position: fixed;
     z-index: 1;
@@ -267,7 +296,8 @@ a:hover {
 
 .lottie-title-flowers svg {
     width: 100% !important;
-    height: auto !important;
+    height: 100% !important;
+    display: block;
 }
 
 .loader {
@@ -275,6 +305,7 @@ a:hover {
     background-color: var(--color-beige);
     width: 100vw;
     height: 100vh;
+    height: 100svh;
     display: none;
     position: fixed;
 }
@@ -1207,10 +1238,15 @@ a:hover {
     .title-bg {
         width: 100vw;
         height: 100vh;
+        height: 100svh;
     }
     .lottie-title-flowers {
         width: 175%;
         position: absolute;
+        left: 50%;
+        top: 0;
+        height: 100%;
+        transform: translateX(-50%);
     }
     .inner-half {
         flex-flow: column;
@@ -1318,6 +1354,8 @@ a:hover {
     .lottie-title-flowers,
     .lottie-end-flowers {
         width: 220%;
+        left: 50%;
+        transform: translateX(-50%);
     }
     .end-text.end-text-1,
     .end-text.end-text-5,
