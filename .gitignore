@@ -1,0 +1,18 @@
+# CDN cache / scraped files - not needed for deployment
+vod-adaptive-ak.vimeocdn.com/
+arclight.vimeo.com/
+d3e54v103j8qbb.cloudfront.net/
+f.vimeocdn.com/
+i.vimeocdn.com/
+lensflare.vimeo.com/
+player.vimeo.com/
+plausible.io/
+p.typekit.net/
+use.typekit.net/
+fonts.googleapis.com/
+fonts.gstatic.com/
+_DataURI/
+importanceofbees.com/
+
+# OS files
+.DS_Store
