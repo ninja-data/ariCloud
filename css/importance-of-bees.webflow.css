@@ -25,7 +25,7 @@
 }
 
 body {
-    background-color: #3d3d00;
+    background-color: var(--color-beige);
     color: var(--color-black);
     font-family: notosans, sans-serif;
     font-size: 1.25vw;
@@ -131,14 +131,14 @@ a:hover {
 
 .bee-green {
     z-index: 7;
-    width: 3.4vw;
-    height: 2.55vw;
+    width: 6vw;
+    height: 4.5vw;
     position: absolute;
 }
 
 .bee-green.green-follow {
-    width: 4.5vw;
-    height: 3.375vw;
+    width: 100px;
+    height: 75px;
     position: absolute;
     top: 0;
     left: 0;
@@ -150,15 +150,15 @@ a:hover {
 }
 
 .bee-green.flipped.green-graze {
-    width: 2.8vw;
-    height: 2.1vw;
+    width: 5vw;
+    height: 3.75vw;
     top: 7vw;
     left: 54vw;
 }
 
 .bee-green.flipped.green-graze-new {
-    width: 2.8vw;
-    height: 2.1vw;
+    width: 5vw;
+    height: 3.75vw;
     top: 2vw;
     left: 54vw;
 }
@@ -172,8 +172,8 @@ a:hover {
 }
 
 .bee-honey {
-    width: 4.5vw;
-    height: 3.375vw;
+    width: 8vw;
+    height: 6vw;
     margin-top: 0;
     margin-left: 0;
     position: absolute;
@@ -181,10 +181,10 @@ a:hover {
 
 .bee-honey.honey-graze {
     z-index: 15;
-    width: 3.4vw;
-    height: 2.55vw;
-    margin-top: -1.42vw;
-    margin-left: -1.85vw;
+    width: 6vw;
+    height: 4.5vw;
+    margin-top: -2.5vw;
+    margin-left: -3.25vw;
 }
 
 .bee-honey.honey-follow {
@@ -193,8 +193,8 @@ a:hover {
 }
 
 .bee-honey.honey-follow.flipped {
-    width: 5.6vw;
-    height: 4.2vw;
+    width: 120px;
+    height: 90px;
     position: absolute;
     top: 0;
     left: 0;
@@ -210,8 +210,8 @@ a:hover {
 
 .bee-bumble {
     z-index: 7;
-    width: 5.1vw;
-    height: 3.825vw;
+    width: 9vw;
+    height: 6.75vw;
     position: absolute;
     top: 0;
     left: 0;
@@ -222,8 +222,8 @@ a:hover {
 }
 
 .bee-bumble.bumble-follow {
-    width: 6.8vw;
-    height: 5.1vw;
+    width: 140px;
+    height: 105px;
     position: absolute;
     top: 0;
     left: 0;
@@ -239,15 +239,15 @@ a:hover {
 }
 
 .bee-bumble.bumble-graze {
-    width: 4.5vw;
-    height: 3.375vw;
+    width: 8vw;
+    height: 6vw;
     top: 8vw;
     left: -9vw;
 }
 
 .bee-bumble.bumble-graze-new {
-    width: 4.5vw;
-    height: 3.375vw;
+    width: 8vw;
+    height: 6vw;
     top: 5vw;
     left: -7vw;
 }
@@ -283,20 +283,26 @@ a:hover {
 }
 
 .lottie-title-flowers {
-    flex-flow: row;
-    justify-content: center;
-    align-items: center;
     width: 100%;
     height: 100%;
     display: flex;
     position: absolute;
     top: 0;
     left: 0;
+    transform: none;
 }
 
 .lottie-title-flowers svg {
-    width: 100% !important;
-    height: 100% !important;
+    /* Make the SVG always large enough to COVER the viewport,
+       regardless of whether preserveAspectRatio is "meet" or "slice".
+       The SVG viewBox is square (2000×2000), so sizing it to the
+       viewport's longer dimension turns "meet" into effective "cover". */
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    width: max(100vw, 100vh) !important;
+    height: max(100vw, 100vh) !important;
     display: block;
 }
 
@@ -1240,14 +1246,7 @@ a:hover {
         height: 100vh;
         height: 100svh;
     }
-    .lottie-title-flowers {
-        width: 175%;
-        position: absolute;
-        left: 50%;
-        top: 0;
-        height: 100%;
-        transform: translateX(-50%);
-    }
+    /* lottie fills viewport via base rule — no override needed */
     .inner-half {
         flex-flow: column;
         justify-content: flex-start;
@@ -1302,9 +1301,7 @@ a:hover {
     .wildbees-gallery {
         column-count: auto;
     }
-    .lottie-end-flowers {
-        width: 150%;
-    }
+    /* lottie-end-flowers fills via base rule */
     .honeycomb-text-holder {
         width: 100%;
     }
@@ -1347,26 +1344,200 @@ a:hover {
     }
 }
 
-@media screen and (max-width: 479px) {
-    p {
-        font-size: 5vw;
+@media screen and (max-width: 768px) {
+    /* ── Hero ── */
+    .bee-cursor-holder {
+        /* display: none; cursor-follow bees make no sense on touch screens */
     }
-    .lottie-title-flowers,
-    .lottie-end-flowers {
-        width: 220%;
-        left: 50%;
-        transform: translateX(-50%);
+    /* lottie fills viewport via base rule — no override needed */
+    .hero-animated-text-inner {
+        font-size: clamp(38px, 8.5vw, 80px);
+        padding: clamp(10px, 2.5vw, 22px) clamp(14px, 3.5vw, 36px);
+        letter-spacing: -0.025em;
+    }
+
+    /* ── Typography ── */
+    h3 {
+        font-size: 13vw;
+        margin-bottom: 3vw;
+    }
+    p {
+        font-size: 4.2vw;
+    }
+
+    /* ── Layout containers ── */
+    .inner-half,
+    .inner-full,
+    .inner-graze {
+        max-width: 90%;
+    }
+    .inner-map {
+        top: 7vw;
+    }
+    .map-holder {
+        max-width: 90%;
+    }
+    .map-text {
+        max-width: 90%;
+        margin-top: 8vw;
+    }
+    .intro-text-holder {
+        width: 90%;
+    }
+    .grazing-scroll {
+        width: 80vw;
+    }
+    .stat-video {
+        width: 90%;
+    }
+
+    /* ── Section padding ── */
+    .history {
+        padding-top: 16vw;
+        padding-bottom: 16vw;
+    }
+    .dying {
+        padding-top: 12vw;
+        padding-bottom: 16vw;
+    }
+    .beekeepers {
+        padding-top: 16vw;
+        padding-bottom: 16vw;
+    }
+    .wildbees {
+        padding-top: 16vw;
+        padding-bottom: 16vw;
+    }
+    .honeycomb {
+        padding-top: 16vw;
+        padding-bottom: 16vw;
+    }
+    .stats {
+        padding-top: 16vw;
+        padding-bottom: 16vw;
+    }
+
+    /* ── End section numbers ── */
+    .number-hex {
+        width: 10vw;
+    }
+    .number-text {
+        font-size: 4.2vw;
     }
     .end-text.end-text-1,
     .end-text.end-text-5,
     .bee-number {
-        width: 80%;
+        width: 78%;
+    }
+
+    /* ── Credits ── */
+    .credit-sources {
+        font-size: 3.5vw;
+    }
+
+    /* ── Misc ── */
+    .keeper-text {
+        margin-bottom: 10vw;
+    }
+    .grazing-text-holder {
+        margin-bottom: 40px;
+    }
+}
+
+@media screen and (max-width: 479px) {
+    /* ── Hero ── */
+    /* lottie fills viewport via base rule — no override needed */
+    .hero-animated-text-inner {
+        font-size: clamp(34px, 9.5vw, 60px);
+        padding: 12px 18px;
+        letter-spacing: -0.03em;
+    }
+
+    /* ── Typography ── */
+    h3 {
+        font-size: 16vw;
+        margin-bottom: 4vw;
+    }
+    p {
+        font-size: 5vw;
+    }
+
+    /* ── Layout containers ── */
+    .inner-half,
+    .inner-full,
+    .inner-graze {
+        max-width: 92%;
+    }
+    .intro-text-holder {
+        width: 92%;
+    }
+    .map-text {
+        max-width: 92%;
+    }
+    .map-holder {
+        max-width: 92%;
+    }
+    .grazing-scroll {
+        width: 88vw;
+    }
+    .stat-video {
+        width: 95%;
+    }
+
+    /* ── End section ── */
+    .end-text.end-text-1,
+    .end-text.end-text-5,
+    .bee-number {
+        width: 88%;
     }
     .number-hex {
-        width: 12vw;
+        width: 14vw;
     }
     .number-text {
         font-size: 5vw;
+    }
+
+    /* ── Section padding ── */
+    .history {
+        padding-top: 20vw;
+        padding-bottom: 20vw;
+    }
+    .dying {
+        padding-top: 16vw;
+        padding-bottom: 20vw;
+    }
+    .beekeepers {
+        padding-top: 20vw;
+        padding-bottom: 20vw;
+    }
+    .wildbees {
+        padding-top: 20vw;
+        padding-bottom: 20vw;
+    }
+    .honeycomb {
+        padding-top: 20vw;
+        padding-bottom: 20vw;
+    }
+    .stats {
+        padding-top: 20vw;
+        padding-bottom: 20vw;
+    }
+
+    /* ── Credits ── */
+    .credit-sources {
+        font-size: 4vw;
+    }
+
+    /* ── Misc ── */
+    .keeper-text {
+        margin-bottom: 14vw;
+    }
+}
+
+/* Touch devices wider than 768px (e.g. iPad landscape) — still hide cursor bees */
+@media (hover: none) and (pointer: coarse) {
+    .bee-cursor-holder {
+        /* display: none; */
     }
 }
 

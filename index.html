@@ -524,6 +524,43 @@
              });
          });
      </script>
+    <script>
+        // Force Lottie SVG to use slice (cover) instead of meet (contain)
+        // so the flower animation fills the full viewport with no blank bars.
+        (function () {
+            function applySlice(svg) {
+                if (svg) svg.setAttribute('preserveAspectRatio', 'xMidYMid slice');
+            }
+
+            var containers = [
+                document.querySelector('.lottie-title-flowers'),
+                document.querySelector('.lottie-end-flowers')
+            ];
+
+            containers.forEach(function (container) {
+                if (!container) return;
+
+                // Fix any SVG already present
+                applySlice(container.querySelector('svg'));
+
+                // Watch for SVG being injected by the Lottie player
+                var obs = new MutationObserver(function () {
+                    applySlice(container.querySelector('svg'));
+                });
+                obs.observe(container, { childList: true, subtree: true });
+            });
+
+            // Belt-and-suspenders: re-apply after a short delay in case
+            // the Lottie player resets it during its first frame paint.
+            [200, 600, 1200].forEach(function (ms) {
+                setTimeout(function () {
+                    containers.forEach(function (c) {
+                        if (c) applySlice(c.querySelector('svg'));
+                    });
+                }, ms);
+            });
+        })();
+    </script>
 </body>
 
 </html>
