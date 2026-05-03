@@ -3,7 +3,9 @@ import socketserver
 import os
 
 PORT = int(os.environ.get('PORT', 8000))
-os.chdir('/home/site/wwwroot')  # Azure's deploy directory
+# Serve from the directory where this script lives (works in /tmp/... or /home/site/wwwroot)
+os.chdir(os.path.dirname(os.path.abspath(__file__)))
+print(f"Serving from: {os.getcwd()}")
 
 Handler = http.server.SimpleHTTPRequestHandler
 with socketserver.TCPServer(("", PORT), Handler) as httpd:
