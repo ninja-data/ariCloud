@@ -114,7 +114,7 @@ a:hover {
 
 .hero-animated-text-kicker {
     font-family: haboro-serif, sans-serif;
-    font-size: 0.15em;
+    font-size: 0.135em;
     font-weight: 600;
     letter-spacing: 0.08em;
     line-height: 1.2;
@@ -160,7 +160,7 @@ a:hover {
 }
 
 .hero-animated-text-button {
-    border: none;
+    border: 1px solid #000;
     border-radius: 999px;
     background-color: #fff;
     color: #000;
