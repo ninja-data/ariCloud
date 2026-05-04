@@ -97,7 +97,7 @@ a:hover {
 }
 
 .hero-animated-text-inner {
-    background-color: #f7f1b7;
+    background-color: transparent;
     display: flex;
     flex-direction: column;
     gap: 0.38em;
@@ -1538,15 +1538,15 @@ a:hover {
     /* ── Hero ── */
     /* lottie fills viewport via base rule — no override needed */
     .hero-animated-text-inner {
-        font-size: clamp(44px, 12vw, 72px);
-        padding: 16px 18px;
+        font-size: clamp(56px, 15vw, 92px);
+        padding: 18px 20px;
         letter-spacing: -0.03em;
     }
     .hero-animated-text-kicker {
-        font-size: 0.18em;
+        font-size: 0.2em;
     }
     .hero-animated-text-subtitle {
-        font-size: 0.34em;
+        font-size: 0.38em;
     }
     .hero-animated-text-actions {
         width: 100%;
@@ -1559,8 +1559,8 @@ a:hover {
     .hero-animated-text-button {
         width: auto;
         min-width: 0;
-        padding: 0.85em 1em;
-        font-size: 0.22em;
+        padding: 0.9em 1.15em;
+        font-size: 0.28em;
         text-align: center;
         white-space: nowrap;
     }
