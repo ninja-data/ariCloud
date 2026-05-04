@@ -125,7 +125,12 @@ a:hover {
     display: inline-flex;
     align-items: center;
     gap: 0.04em;
+    font-size: 1.2em;
     line-height: 0.95;
+}
+
+.hero-animated-text-brand-accent {
+    color: var(--color-yellow);
 }
 
 .hero-animated-text-hexagon {
@@ -155,7 +160,7 @@ a:hover {
 }
 
 .hero-animated-text-button {
-    border: 1px solid #000;
+    border: none;
     border-radius: 999px;
     background-color: #fff;
     color: #000;
