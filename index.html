@@ -385,6 +385,7 @@
                     mobileMaxSpeedX: 18,
                     mobileMaxSpeedY: 16,
                     seed: 1.1,
+                    introStartXOffset: -10,
                     introStartY: -22,
                     introDelay: 0
                 },
@@ -408,6 +409,7 @@
                     mobileMaxSpeedX: 24,
                     mobileMaxSpeedY: 22,
                     seed: 2.6,
+                    introStartXOffset: 12,
                     introStartY: -24,
                     introDelay: 0.12
                 },
@@ -431,6 +433,7 @@
                     mobileMaxSpeedX: 28,
                     mobileMaxSpeedY: 24,
                     seed: 5.7,
+                    introStartXOffset: -7,
                     introStartY: -18,
                     introDelay: 0.38
                 }
@@ -456,8 +459,10 @@
                 const alpha = 1 - Math.exp(-dtSeconds / tau);
                 return current + (target - current) * alpha;
             };
+            const lerp = (start, end, t) => start + ((end - start) * t);
             const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3);
-            const introDuration = 1.35;
+            const easeInOutSine = (t) => -(Math.cos(Math.PI * t) - 1) / 2;
+            const introDuration = 1.8;
             let introActive = true;
             let introStartTime = 0;
 
@@ -535,8 +540,12 @@
                         const localElapsed = elapsed - (bee.introDelay || 0);
                         const p = clamp(localElapsed / introDuration, 0, 1);
                         const e = easeOutCubic(p);
+                        const glide = easeInOutSine(p);
                         const startY = (typeof bee.introStartY === 'number' ? bee.introStartY : -20);
-                        ty = startY + (e * (ty - startY));
+                        const startX = tx + (bee.introStartXOffset || 0);
+                        const settleFloatY = Math.sin((p * Math.PI) + bee.seed) * (1 - p) * 2.1;
+                        tx = lerp(startX, tx, glide);
+                        ty = lerp(startY, ty, e) + settleFloatY;
                         introAllDone = introAllDone && (p >= 1);
                     }
 
@@ -544,7 +553,7 @@
                     const nextX = approachExp(bee.x, tx, dt, tau);
                     const nextY = approachExp(bee.y, ty, dt, tau);
 
-                    const speedScale = introActive ? 2.2 : 1;
+                    const speedScale = introActive ? 1.45 : 1;
                     const maxStepX = bee.maxSpeedX * dt * speedScale;
                     const maxStepY = bee.maxSpeedY * dt * speedScale;
                     bee.x += clamp(nextX - bee.x, -maxStepX, maxStepX);
