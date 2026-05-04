@@ -369,73 +369,82 @@
                     el: document.querySelector('.bee-green'), 
                     x: 50, y: 50, 
                     inertia: 0.3,
-                    parallaxX: 65, parallaxY: 60,
+                    parallaxX: 38, parallaxY: 34,
                     offsetX: -34, offsetY: -28,
                     maxSpeedX: 60,
                     maxSpeedY: 54,
-                    wanderX: 3.6,
-                    wanderY: 2.4,
-                    wanderSpeed: 1.55,
+                    wanderX: 5.8,
+                    wanderY: 4.4,
+                    wanderSpeed: 1.35,
+                    orbitX: 4.8,
+                    orbitY: 3.4,
+                    orbitSpeed: 0.52,
                     mobileParallaxX: 28,
                     mobileParallaxY: 24,
                     mobileOffsetX: -26,
                     mobileOffsetY: 19,
-                    mobileWanderX: 1.0,
-                    mobileWanderY: 0.9,
+                    mobileWanderX: 2.2,
+                    mobileWanderY: 1.8,
                     mobileMaxSpeedX: 18,
                     mobileMaxSpeedY: 16,
                     seed: 1.1,
                     introStartXOffset: -10,
                     introStartY: -22,
-                    introDelay: 0
+                    introDelay: 0.06
                 },
                 { 
                     el: document.querySelector('.bee-honey'), 
                     x: 50, y: 50, 
                     inertia: 0.13,
-                    parallaxX: 58, parallaxY: 66,
+                    parallaxX: 32, parallaxY: 36,
                     offsetX: 34, offsetY: -24,
                     maxSpeedX: 26,
                     maxSpeedY: 24,
-                    wanderX: 3.2,
-                    wanderY: 2.5,
-                    wanderSpeed: 0.95,
+                    wanderX: 5.1,
+                    wanderY: 4.1,
+                    wanderSpeed: 0.88,
+                    orbitX: 5.6,
+                    orbitY: 4.2,
+                    orbitSpeed: 0.41,
                     mobileParallaxX: 24,
                     mobileParallaxY: 28,
                     mobileOffsetX: 39,
                     mobileOffsetY: -30,
-                    mobileWanderX: 1.5,
-                    mobileWanderY: 1.2,
+                    mobileWanderX: 2.4,
+                    mobileWanderY: 1.9,
                     mobileMaxSpeedX: 24,
                     mobileMaxSpeedY: 22,
                     seed: 2.6,
                     introStartXOffset: 12,
                     introStartY: -24,
-                    introDelay: 0.12
+                    introDelay: 0.2
                 },
                 {
                     el: document.querySelector('.bee-honey.honey-follow-2'),
                     x: 50, y: 50,
                     inertia: 0.22,
-                    parallaxX: 42, parallaxY: 38,
+                    parallaxX: 24, parallaxY: 22,
                     offsetX: 4, offsetY: 30,
                     maxSpeedX: 38,
                     maxSpeedY: 34,
-                    wanderX: 4.1,
-                    wanderY: 3.0,
-                    wanderSpeed: 1.2,
+                    wanderX: 6.2,
+                    wanderY: 4.8,
+                    wanderSpeed: 1.05,
+                    orbitX: 6.8,
+                    orbitY: 5.1,
+                    orbitSpeed: 0.48,
                     mobileParallaxX: 18,
                     mobileParallaxY: 16,
                     mobileOffsetX: 5,
                     mobileOffsetY: 18,
-                    mobileWanderX: 1.7,
-                    mobileWanderY: 1.4,
+                    mobileWanderX: 2.6,
+                    mobileWanderY: 2.1,
                     mobileMaxSpeedX: 28,
                     mobileMaxSpeedY: 24,
                     seed: 5.7,
                     introStartXOffset: -7,
                     introStartY: -18,
-                    introDelay: 0.38
+                    introDelay: 0.44
                 }
             ];
 
@@ -462,7 +471,8 @@
             const lerp = (start, end, t) => start + ((end - start) * t);
             const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3);
             const easeInOutSine = (t) => -(Math.cos(Math.PI * t) - 1) / 2;
-            const introDuration = 1.8;
+            const easeOutQuad = (t) => 1 - ((1 - t) * (1 - t));
+            const introDuration = 2.1;
             let introActive = true;
             let introStartTime = 0;
 
@@ -503,9 +513,13 @@
                     const sy = Math.cos((t * (0.75 + bee.wanderSpeed)) + (bee.seed * 2.1));
                     const sx2 = Math.sin((t * (1.35 + bee.wanderSpeed * 0.6)) + (bee.seed * 3.3));
                     const sy2 = Math.cos((t * (1.15 + bee.wanderSpeed * 0.6)) + (bee.seed * 4.1));
+                    const ox = Math.sin((t * bee.orbitSpeed) + (bee.seed * 0.9));
+                    const oy = Math.cos((t * (bee.orbitSpeed * 1.18)) + (bee.seed * 1.4));
                     const wanderVX = (sx * bee.wanderX) + (sx2 * (bee.wanderX * 0.55));
                     const wanderVY = (sy * bee.wanderY) + (sy2 * (bee.wanderY * 0.55));
-                    const tx = 50 + bee.offsetX + (smoothX * bee.parallaxX) + wanderVX;
+                    const orbitVX = ox * (bee.orbitX || 0);
+                    const orbitVY = oy * (bee.orbitY || 0);
+                    const tx = 50 + bee.offsetX + (smoothX * bee.parallaxX) + wanderVX + orbitVX;
                     bee.x = tx;
                     bee.y = (typeof bee.introStartY === 'number' ? bee.introStartY : -20);
                     bee.el.style.transform = `translate3d(${bee.x.toFixed(3)}vw, ${bee.y.toFixed(3)}vh, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)`;
@@ -529,22 +543,27 @@
                     const sy = Math.cos((t * (0.75 + bee.wanderSpeed)) + (bee.seed * 2.1));
                     const sx2 = Math.sin((t * (1.35 + bee.wanderSpeed * 0.6)) + (bee.seed * 3.3));
                     const sy2 = Math.cos((t * (1.15 + bee.wanderSpeed * 0.6)) + (bee.seed * 4.1));
+                    const ox = Math.sin((t * bee.orbitSpeed) + (bee.seed * 0.9));
+                    const oy = Math.cos((t * (bee.orbitSpeed * 1.18)) + (bee.seed * 1.4));
                     const wanderVX = (sx * bee.wanderX) + (sx2 * (bee.wanderX * 0.55));
                     const wanderVY = (sy * bee.wanderY) + (sy2 * (bee.wanderY * 0.55));
+                    const orbitVX = ox * (bee.orbitX || 0);
+                    const orbitVY = oy * (bee.orbitY || 0);
 
-                    let tx = 50 + bee.offsetX + (smoothX * bee.parallaxX) + wanderVX;
-                    let ty = 50 + bee.offsetY + (smoothY * bee.parallaxY) + wanderVY;
+                    let tx = 50 + bee.offsetX + (smoothX * bee.parallaxX) + wanderVX + orbitVX;
+                    let ty = 50 + bee.offsetY + (smoothY * bee.parallaxY) + wanderVY + orbitVY;
 
                     if (introActive) {
                         const elapsed = (now - introStartTime) / 1000;
                         const localElapsed = elapsed - (bee.introDelay || 0);
                         const p = clamp(localElapsed / introDuration, 0, 1);
-                        const e = easeOutCubic(p);
+                        const e = easeOutQuad(p);
                         const glide = easeInOutSine(p);
                         const startY = (typeof bee.introStartY === 'number' ? bee.introStartY : -20);
                         const startX = tx + (bee.introStartXOffset || 0);
-                        const settleFloatY = Math.sin((p * Math.PI) + bee.seed) * (1 - p) * 2.1;
-                        tx = lerp(startX, tx, glide);
+                        const introSwayX = Math.sin((p * Math.PI * 1.35) + bee.seed) * (1 - p) * 2.6;
+                        const settleFloatY = Math.sin((p * Math.PI * 0.9) + bee.seed) * (1 - p) * 1.6;
+                        tx = lerp(startX, tx, glide) + introSwayX;
                         ty = lerp(startY, ty, e) + settleFloatY;
                         introAllDone = introAllDone && (p >= 1);
                     }
@@ -553,7 +572,7 @@
                     const nextX = approachExp(bee.x, tx, dt, tau);
                     const nextY = approachExp(bee.y, ty, dt, tau);
 
-                    const speedScale = introActive ? 1.45 : 1;
+                    const speedScale = introActive ? 1.2 : 1;
                     const maxStepX = bee.maxSpeedX * dt * speedScale;
                     const maxStepY = bee.maxSpeedY * dt * speedScale;
                     bee.x += clamp(nextX - bee.x, -maxStepX, maxStepX);
