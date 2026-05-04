@@ -100,6 +100,15 @@
             }
         }
 
+        /* Extra honey bee — faces right, smaller, distinct trajectory */
+        .bee-honey.honey-follow-2 {
+            width: 85px;
+            height: 64px;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
         /* END ********************************** */
 
         .end-bumble-style {
@@ -123,6 +132,7 @@
             <div data-w-id="4bc3cd6e-9eb1-5784-2164-8378700c928f" style="transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="bee-wrapper">
                 <div class="bee-green green-follow"></div>
                 <div class="bee-honey honey-follow flipped"></div>
+                <div class="bee-honey honey-follow-2"></div>
             </div>
         </div>
         <div class="title-bg">
@@ -383,6 +393,21 @@
                     seed: 2.6,
                     introStartY: -24,
                     introDelay: 0.12
+                },
+                {
+                    el: document.querySelector('.bee-honey.honey-follow-2'),
+                    x: 50, y: 50,
+                    inertia: 0.22,
+                    parallaxX: 42, parallaxY: 38,
+                    offsetX: -18, offsetY: 20,
+                    maxSpeedX: 38,
+                    maxSpeedY: 34,
+                    wanderX: 4.1,
+                    wanderY: 3.0,
+                    wanderSpeed: 1.2,
+                    seed: 5.7,
+                    introStartY: -18,
+                    introDelay: 0.38
                 }
             ];
 
