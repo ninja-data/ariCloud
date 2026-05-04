@@ -482,7 +482,7 @@
             const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3);
             const easeInOutSine = (t) => -(Math.cos(Math.PI * t) - 1) / 2;
             const easeOutQuad = (t) => 1 - ((1 - t) * (1 - t));
-            const introDuration = 2.1;
+            const introDuration = 4.0;
             let introActive = true;
             let introStartTime = 0;
 
@@ -563,33 +563,33 @@
                     let tx = 50 + bee.offsetX + (smoothX * bee.parallaxX) + wanderVX + orbitVX;
                     let ty = 50 + bee.offsetY + (smoothY * bee.parallaxY) + wanderVY + orbitVY;
 
+                    let introRotZ = 0;
                     if (introActive) {
                         const elapsed = (now - introStartTime) / 1000;
                         const localElapsed = elapsed - (bee.introDelay || 0);
                         const p = clamp(localElapsed / introDuration, 0, 1);
-                        const e = easeOutQuad(p);
-                        const glide = easeInOutSine(p);
+                        const e = easeInOutSine(p);
                         const startY = (typeof bee.introStartY === 'number' ? bee.introStartY : -20);
                         const startX = tx + (bee.introStartXOffset || 0);
-                        const introSwayX = Math.sin((p * Math.PI * 1.35) + bee.seed) * (1 - p) * 2.6;
-                        const settleFloatY = Math.sin((p * Math.PI * 0.9) + bee.seed) * (1 - p) * 1.6;
-                        tx = lerp(startX, tx, glide) + introSwayX;
-                        ty = lerp(startY, ty, e) + settleFloatY;
+                        // Bell-curve envelope: 0 at start and end, peaks mid-way — no jump on first frame
+                        const spiralEnvelope = Math.sin(p * Math.PI);
+                        const spiralRadius = spiralEnvelope * 11;
+                        const spiralAngle = p * Math.PI * 2 * 1.5 + bee.seed * Math.PI * 2;
+                        bee.x = lerp(startX, tx, e) + Math.cos(spiralAngle) * spiralRadius;
+                        bee.y = lerp(startY, ty, e) + Math.sin(spiralAngle) * spiralRadius * 0.45;
+                        introRotZ = -Math.sin(spiralAngle) * spiralEnvelope * 22;
                         introAllDone = introAllDone && (p >= 1);
+                    } else {
+                        const tau = clamp(0.03 / clamp(bee.inertia, 0.001, 0.95), 0.08, 0.9);
+                        const nextX = approachExp(bee.x, tx, dt, tau);
+                        const nextY = approachExp(bee.y, ty, dt, tau);
+                        const maxStepX = bee.maxSpeedX * dt;
+                        const maxStepY = bee.maxSpeedY * dt;
+                        bee.x += clamp(nextX - bee.x, -maxStepX, maxStepX);
+                        bee.y += clamp(nextY - bee.y, -maxStepY, maxStepY);
                     }
 
-                    const tau = clamp(0.03 / clamp(bee.inertia, 0.001, 0.95), 0.08, 0.9);
-                    const nextX = approachExp(bee.x, tx, dt, tau);
-                    const nextY = approachExp(bee.y, ty, dt, tau);
-
-                    const speedScale = introActive ? 1.2 : 1;
-                    const maxStepX = bee.maxSpeedX * dt * speedScale;
-                    const maxStepY = bee.maxSpeedY * dt * speedScale;
-                    bee.x += clamp(nextX - bee.x, -maxStepX, maxStepX);
-                    bee.y += clamp(nextY - bee.y, -maxStepY, maxStepY);
-                    
-                    // Exact requested format
-                    bee.el.style.transform = `translate3d(${bee.x.toFixed(3)}vw, ${bee.y.toFixed(3)}vh, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)`;
+                    bee.el.style.transform = `translate3d(${bee.x.toFixed(3)}vw, ${bee.y.toFixed(3)}vh, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(${introRotZ.toFixed(2)}deg) skew(0deg, 0deg)`;
                     bee.el.style.willChange = 'transform';
                     bee.el.style.transformStyle = 'preserve-3d';
                 });
