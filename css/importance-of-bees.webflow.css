@@ -1347,7 +1347,19 @@ a:hover {
 @media screen and (max-width: 768px) {
     /* ── Hero ── */
     .bee-cursor-holder {
-        /* display: none; cursor-follow bees make no sense on touch screens */
+        display: flex;
+    }
+    .bee-green.green-follow {
+        width: 72px;
+        height: 54px;
+    }
+    .bee-honey.honey-follow.flipped {
+        width: 88px;
+        height: 66px;
+    }
+    .bee-honey.honey-follow-2 {
+        width: 68px;
+        height: 51px;
     }
     /* lottie fills viewport via base rule — no override needed */
     .hero-animated-text-inner {
@@ -1537,7 +1549,7 @@ a:hover {
 /* Touch devices wider than 768px (e.g. iPad landscape) — still hide cursor bees */
 @media (hover: none) and (pointer: coarse) {
     .bee-cursor-holder {
-        /* display: none; */
+        display: flex;
     }
 }
 
