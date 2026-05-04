@@ -174,7 +174,7 @@ a:hover {
     white-space: nowrap;
 }
 
-.hero-animated-text-button.button-accent {
+.hero-animated-text-button:hover {
     background-color: var(--color-yellow);
 }
 
@@ -1565,9 +1565,6 @@ a:hover {
         font-size: 0.22em;
         text-align: center;
         white-space: nowrap;
-    }
-    .hero-animated-text-button.button-accent {
-        flex-grow: 1.35;
     }
 
     /* ── Typography ── */
